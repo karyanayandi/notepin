@@ -1,0 +1,5 @@
+{
+  "regions": ["sgp-1"],
+  "cleanUrls": true,
+  "trailingSlash": false
+}

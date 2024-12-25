@@ -1,0 +1,18 @@
+---
+import Hero from "../components/Hero.svelte"
+import Navigation from "../components/Navigation.svelte"
+import Professionals from "../components/Professionals.svelte"
+import ColorOptions from "../components/sections/ColorOptions.svelte"
+import Features from "../components/sections/Features.svelte"
+import Specs from "../components/sections/Specs.svelte"
+import Layout from "../layouts/Layout.astro"
+---
+
+<Layout title="PLAUD NotePin - The World's Most Wearable AI Voice Recorder">
+  <Navigation client:load />
+  <Hero client:load />
+  <Features client:load />
+  <ColorOptions client:load />
+  <Specs client:load />
+  <Professionals client:load />
+</Layout>

@@ -1,0 +1,56 @@
+---
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="PLAUD NotePin - The World's Most Wearable AI Voice Recorder"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: "Century Gothic";
+    font-weight: bolder;
+    font-style: normal;
+    font-display: swap;
+    src: url("//www.plaud.ai/cdn/shop/t/54/assets/century-gothic.ttf?v=18887588200147258011734684753");
+  }
+
+  @font-face {
+    font-family: "Century Gothic Bold";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("//www.plaud.ai/cdn/shop/t/54/assets/century-gothic-bold.ttf?v=171724761261993690931734684753");
+  }
+
+  @font-face {
+    font-family: "NotoSansJP";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("//www.plaud.ai/cdn/shop/t/54/assets/NotoSansJP-Bold.ttf?v=88239799035899452061734684753");
+  }
+
+  html {
+    font-family: "Century Gothic", system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+</style>
