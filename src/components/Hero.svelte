@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { fade } from "svelte/transition"
 
   import VideoModal from "@/components/ui/VideoModal.svelte"

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   const wearStyles = [
     { name: "Wristband", image: "/wristband.jpg" },
     { name: "Necklace", image: "/necklace.jpg" },

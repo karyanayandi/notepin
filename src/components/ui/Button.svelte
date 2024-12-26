@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   export let variant = "primary"
   export let size = "md"
 </script>
