@@ -10,5 +10,5 @@ import Layout from "@/layouts/Layout.astro"
   <Navigation client:visible />
   <Hero client:visible />
   <Features client:visible />
-  <Professionals client:visible />
+  <Professionals client:only="svelte" />
 </Layout>
