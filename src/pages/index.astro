@@ -2,6 +2,7 @@
 import Features from "@/components/Features.svelte"
 import Hero from "@/components/Hero.svelte"
 import Navigation from "@/components/Navigation.svelte"
+import Note from "@/components/Note.svelte"
 import Professionals from "@/components/Professionals.svelte"
 import Layout from "@/layouts/Layout.astro"
 ---
@@ -11,4 +12,5 @@ import Layout from "@/layouts/Layout.astro"
   <Hero client:visible />
   <Features client:visible />
   <Professionals client:only="svelte" />
+  <Note client:only="svelte" />
 </Layout>
