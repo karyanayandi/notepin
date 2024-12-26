@@ -1,18 +1,20 @@
 ---
 import Beyond from "@/components/Beyond.astro"
-import Features from "@/components/Features.svelte"
+import Features from "@/components/Features.astro"
 import Hero from "@/components/Hero.svelte"
 import Navigation from "@/components/Navigation.svelte"
 import Note from "@/components/Note.svelte"
 import Professionals from "@/components/Professionals.svelte"
+import SearchAndRetrive from "@/components/SearchAndRetrive.astro"
 import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout title="PLAUD NotePin - The World's Most Wearable AI Voice Recorder">
   <Navigation client:visible />
   <Hero client:visible />
-  <Features client:visible />
+  <Features />
   <Professionals client:only="svelte" />
   <Note client:only="svelte" />
   <Beyond />
+  <SearchAndRetrive />
 </Layout>

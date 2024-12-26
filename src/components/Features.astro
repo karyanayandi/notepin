@@ -1,3 +1,7 @@
+---
+import { Image } from "astro:assets"
+---
+
 <div class="flex items-center justify-center">
   <video
     loop
@@ -26,6 +30,12 @@
     </div>
   </div>
   <div class="container mx-auto">
-    <img src="/feature.png" alt="feature" class="w-full h-full object-cover" />
+    <Image
+      src="/feature.png"
+      alt="feature"
+      class="w-full h-full object-cover"
+      width="1920"
+      height="705"
+    />
   </div>
 </section>
