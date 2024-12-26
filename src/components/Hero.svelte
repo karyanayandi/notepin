@@ -1,10 +1,8 @@
 <script>
   import { fade } from "svelte/transition"
 
-  import VideoButton from "@/components/ui/VideoButton.svelte"
   import VideoModal from "@/components/ui/VideoModal.svelte"
 
-  let isVideoModalOpen = false
   const videoId = "LVm3YG7hdQQ"
 </script>
 
@@ -37,8 +35,6 @@
   </div>
 
   <div class="absolute bottom-8 right-8 z-10">
-    <VideoButton on:click={() => (isVideoModalOpen = true)} />
+    <VideoModal {videoId} />
   </div>
-
-  <VideoModal bind:isOpen={isVideoModalOpen} {videoId} />
 </section>
