@@ -4,12 +4,19 @@
     "verbatimModuleSyntax": true,
     "baseUrl": ".",
     "paths": {
-      "@/": ["src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
-      }
+      },
+      {
+            "name": "typescript-svelte-plugin",
+            "enabled": true,
+            "assumeIsSvelteProject": false
+        }
     ]
   },
   "extends": "astro/tsconfigs/strict",

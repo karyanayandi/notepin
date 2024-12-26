@@ -1,7 +1,5 @@
 <script>
-  import { createEventDispatcher } from "svelte"
-
-  const dispatch = createEventDispatcher()
+  import { dispatch } from "svelte"
 </script>
 
 <!-- svelte-ignore a11y_consider_explicit_label -->

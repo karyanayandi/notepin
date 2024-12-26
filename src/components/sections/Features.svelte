@@ -1,5 +1,5 @@
 <script>
-  import WearStyle from "../ui/WearStyle.svelte"
+  import WearStyle from "@/components/ui/WearStyle.svelte"
 
   const wearStyles = [
     { name: "Wristband", image: "/wristband.jpg" },

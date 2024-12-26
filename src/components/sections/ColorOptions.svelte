@@ -18,6 +18,8 @@
 
     <div class="flex justify-center gap-4 mb-8">
       {#each colors as color}
+        <!-- svelte-ignore a11y_consider_explicit_label -->
+        <!-- svelte-ignore element_invalid_self_closing_tag -->
         <button
           class="w-12 h-12 rounded-full border-2 transition-transform hover:scale-110"
           style="background-color: {color.hex}; border-color: {color.selected

@@ -1,8 +1,8 @@
 <script>
   import { fade } from "svelte/transition"
 
-  import VideoButton from "./ui/VideoButton.svelte"
-  import VideoModal from "./ui/VideoModal.svelte"
+  import VideoButton from "@/components/ui/VideoButton.svelte"
+  import VideoModal from "@/components/ui/VideoModal.svelte"
 
   let isVideoModalOpen = false
   const videoId = "LVm3YG7hdQQ"
