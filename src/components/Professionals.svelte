@@ -1,10 +1,37 @@
 <script lang="ts">
+  import Accordion from "@/components/ui/Accordion.svelte"
+
   const professionals = [
-    "Real estate agent",
-    "Educator",
-    "Engineer",
-    "Doctor",
-    "Creative worker",
+    {
+      title: "Digital nomad",
+      content:
+        "Your AI on-the-go is all you need. The power of AI at around the weight of a AA battery. The NotePin goes anywhere work takes you.",
+    },
+    {
+      title: "Real estate agent",
+      content:
+        "The details are the difference between closing and not. Capture every word your client said so you can deliver exactly what they asked for.",
+    },
+    {
+      title: "Educator",
+      content:
+        "Record and transcribe lectures instantly, making lesson planning and student feedback more efficient.",
+    },
+    {
+      title: "Engineer",
+      content:
+        "Capture technical specifications and field observations with precision and clarity.",
+    },
+    {
+      title: "Doctor",
+      content:
+        "Document patient consultations and medical observations seamlessly during your rounds.",
+    },
+    {
+      title: "Creative worker",
+      content:
+        "Never lose a creative idea again - capture inspiration whenever and wherever it strikes.",
+    },
   ]
 </script>
 
@@ -17,7 +44,7 @@
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div class="relative">
         <img
-          src="/professional.jpg"
+          src="/use.jpg"
           alt="Professional using NotePin"
           class="rounded-3xl w-full"
         />
@@ -26,23 +53,14 @@
       <div>
         <h3 class="text-2xl font-bold mb-4">Digital nomad</h3>
         <h4 class="text-3xl md:text-4xl font-bold mb-6">
-          1,000+ ideas and notes<br />that travel light
+          Convert conversations<br />into closing deals
         </h4>
         <p class="text-gray-600 mb-8">
-          Your AI on-the-go is all you need. The power of AI at around the
-          weight of a AA battery. The NotePin goes anywhere work takes you.
+          The details are the difference between closing and not. Capture every
+          word your client said so you can deliver exactly what they asked for.
         </p>
 
-        <div class="space-y-4">
-          {#each professionals as prof}
-            <div
-              class="flex items-center justify-between py-3 border-b border-gray-200"
-            >
-              <span class="text-lg">{prof}</span>
-              <span class="text-primary">+</span>
-            </div>
-          {/each}
-        </div>
+        <Accordion items={professionals} />
       </div>
     </div>
   </div>

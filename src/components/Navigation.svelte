@@ -4,8 +4,9 @@
       <div class="text-white font-bold text-2xl">PLAUD</div>
 
       <div class="flex items-center space-x-8">
-        <a href="#" class="text-white hover:text-primary transition-colors"
-          >Cart (0)</a
+        <div class="text-white hover:text-primary transition-colors">
+          Cart (0)
+        </div>
         >
       </div>
     </div>

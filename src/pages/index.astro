@@ -1,5 +1,5 @@
 ---
-import Features from "@/components/Features.astro"
+import Features from "@/components/Features.svelte"
 import Hero from "@/components/Hero.svelte"
 import Navigation from "@/components/Navigation.svelte"
 import Professionals from "@/components/Professionals.svelte"
@@ -7,8 +7,8 @@ import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout title="PLAUD NotePin - The World's Most Wearable AI Voice Recorder">
-  <Navigation />
-  <Hero />
-  <Features />
-  <Professionals />
+  <Navigation client:visible />
+  <Hero client:visible />
+  <Features client:visible />
+  <Professionals client:visible />
 </Layout>
