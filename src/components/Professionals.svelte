@@ -5,38 +5,44 @@
   const professionals = [
     {
       title: "Digital nomad",
+      subtitle: "1,000+ ideas and notes that travel light",
       content:
-        "Your AI on-the-go is all you need. The power of AI at around the weight of a AA battery. The NotePin goes anywhere work takes you.",
+        "Your AI on-the-go is all you'll need. The power of AI at around the weight of a AA battery, the NotePin goes anywhere work takes you.",
       image: "/professionals/digital-nomad.webp",
     },
     {
       title: "Real estate agent",
+      subtitle: "Convert conversations into closing deals",
       content:
         "The details are the difference between closing and not. Capture every word your client said so you can deliver exactly what they asked for.",
       image: "/professionals/real-estate-agent.webp",
     },
     {
       title: "Educator",
+      subtitle: "Educating better starts with better insights",
       content:
-        "Record and transcribe lectures instantly, making lesson planning and student feedback more efficient.",
+        "Record, recall, review so you can improve your training programs and provide post session transcripts.",
       image: "/professionals/educator.webp",
     },
     {
       title: "Engineer",
+      subtitle: "Designed to keep you on track and on time",
       content:
-        "Capture technical specifications and field observations with precision and clarity.",
+        "You build, we'll handle your meetings. Even when there's no network, NotePin captures everything, so your project is on schedule.",
       image: "/professionals/engineer.webp",
     },
     {
       title: "Doctor",
+      subtitle: "Accurate summaries for healthier patients",
       content:
-        "Document patient consultations and medical observations seamlessly during your rounds.",
+        "When it comes to health care, no detail can be missed. Capture every word with just one press. NotePin ensures better care and patient health.",
       image: "/professionals/doctor.webp",
     },
     {
       title: "Creative worker",
+      subtitle: "Always ready to capture your next great idea",
       content:
-        "Never lose a creative idea again - capture inspiration whenever and wherever it strikes.",
+        "We do your busy work so you can focus on creative work. AI powered summaries and insights means we took the mundane out of each job.",
       image: "/professionals/creative-worker.webp",
     },
   ]
@@ -56,22 +62,22 @@
 </script>
 
 <section class="py-24 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-4">
+  <div class="container mx-auto">
     <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
       AI notetaker for all professionals
     </h2>
-    <div class="grid md:grid-cols-2 gap-12 items-center">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
       <div class="relative">
         {#key $currentImage}
           <img
             src={$currentImage}
             alt="Professional using NotePin"
-            class="rounded-3xl w-full"
+            class="rounded-[12.5rem] w-full"
           />
         {/key}
       </div>
       <div>
-        <div class="space-y-2">
+        <div class="space-y-2 md:px-20">
           {#each professionals as item, index}
             <div class="border-b border-gray-200">
               <button
@@ -80,17 +86,15 @@
               >
                 <span class="text-lg">{item.title}</span>
                 <span
-                  class="text-primary text-2xl font-light transition-transform duration-200"
-                  style:transform="rotate({activeIndex === index
-                    ? '45deg'
-                    : '0deg'})"
+                  class="text-primary text-2xl font-bold transition-transform duration-200"
                 >
-                  {activeIndex === index ? "−" : "+"}
+                  {activeIndex === index ? "-" : "+"}
                 </span>
               </button>
               {#if activeIndex === index}
-                <div class="pb-4" transition:slide>
-                  <p class="text-gray-600">{item.content}</p>
+                <div class="py-8 space-y-4" transition:slide>
+                  <p class="text-4xl md:text-5xl">{item.subtitle}</p>
+                  <p>{item.content}</p>
                 </div>
               {/if}
             </div>
@@ -98,5 +102,11 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="space-y-4 my-8 md:my-20">
+    <p class="text-2xl md:text-5xl text-center">
+      And more professional use cases
+    </p>
+    <p class="text-2xl md:text-5xl text-center">......</p>
   </div>
 </section>

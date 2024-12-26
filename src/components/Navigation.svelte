@@ -7,7 +7,6 @@
         <div class="text-white hover:text-primary transition-colors">
           Cart (0)
         </div>
-        >
       </div>
     </div>
   </div>
