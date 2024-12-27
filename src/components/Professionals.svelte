@@ -61,12 +61,12 @@
   }
 </script>
 
-<section class="py-24 bg-gray-50">
-  <div class="container mx-auto">
-    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+<section class="py-12 md:py-24 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-5xl font-bold text-center mb-8 md:mb-16">
       AI notetaker for all professionals
     </h2>
-    <div class="grid md:grid-cols-2 gap-16 items-center">
+    <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
       <div class="relative">
         {#key $currentImage}
           <img
@@ -92,8 +92,11 @@
                 </span>
               </button>
               {#if activeIndex === index}
-                <div class="py-8 space-y-4" transition:slide>
-                  <p class="text-4xl md:text-5xl">{item.subtitle}</p>
+                <div
+                  class="py-4 md:py-8 space-y-2 md:space-y-4"
+                  transition:slide
+                >
+                  <p class="text-2xl md:text-4xl">{item.subtitle}</p>
                   <p>{item.content}</p>
                 </div>
               {/if}
@@ -104,9 +107,9 @@
     </div>
   </div>
   <div class="space-y-4 my-8 md:my-20">
-    <p class="text-2xl md:text-5xl text-center">
+    <p class="text-xl md:text-2xl text-center">
       And more professional use cases
     </p>
-    <p class="text-2xl md:text-5xl text-center">......</p>
+    <p class="text-xl md:text-2xl text-center">......</p>
   </div>
 </section>
