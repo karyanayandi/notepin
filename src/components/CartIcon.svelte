@@ -21,7 +21,7 @@
       viewBox="0 0 24 24"
       stroke-width="1.5"
       stroke="currentColor"
-      class="w-7 h-7 sm:w-8 sm:h-8 pointer-events-none"
+      class="w-7 h-7 sm:w-8 sm:h-8 pointer-events-none text-white"
     >
       <path
         stroke-linecap="round"
@@ -31,7 +31,7 @@
     </svg>
     {#if $cart && $cart.totalQuantity > 0}
       <div
-        class="absolute -right-2 -top-1 sm:-right-1 sm:top-0 bg-emerald-900 text-white text-[12px] rounded-full"
+        class="absolute -right-2 -top-1 sm:-right-1 sm:top-0 bg-primary text-white text-[12px] rounded-full"
       >
         <span class="w-5 h-5 flex justify-center text-center items-center">
           {$cart.totalQuantity}

@@ -1,9 +1,13 @@
 <script lang="ts">
   import { fade } from "svelte/transition"
 
+  import AddToCartForm from "@/components/AddToCartForm.svelte"
   import VideoModal from "@/components/ui/VideoModal.svelte"
 
   const videoId = "LVm3YG7hdQQ"
+
+  const { variantId, variantQuantityAvailable, variantAvailableForSale } =
+    $props()
 </script>
 
 <section class="relative h-screen flex items-center text-white overflow-hidden">
@@ -26,11 +30,11 @@
       <h2 class="text-5xl md:text-8xl mb-8">
         PLAUD<br />NotePin
       </h2>
-      <button
-        class="bg-primary hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full transition-colors"
-      >
-        Pre-order Now
-      </button>
+      <AddToCartForm
+        {variantId}
+        {variantQuantityAvailable}
+        {variantAvailableForSale}
+      />
     </div>
   </div>
 

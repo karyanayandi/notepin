@@ -1,6 +1,7 @@
 ---
 import AddToCartForm from "@/components/AddToCartForm.svelte"
 import Beyond from "@/components/Beyond.astro"
+import CartDrawer from "@/components/CartDrawer.svelte"
 import Features from "@/components/Features.astro"
 import Hero from "@/components/Hero.svelte"
 import Navigation from "@/components/Navigation.svelte"
@@ -27,24 +28,16 @@ export const prerender = false
 
 <Layout title="PLAUD NotePin - The World's Most Wearable AI Voice Recorder">
   <Navigation client:visible />
-  <Hero client:visible />
+  <CartDrawer client:idle />
+  <Hero
+    variantId={firstVariant?.id}
+    variantQuantityAvailable={firstVariant?.quantityAvailable}
+    variantAvailableForSale={firstVariant?.availableForSale}
+    client:visible
+  />
   <Features />
   <Professionals client:only="svelte" />
   <Note client:only="svelte" />
   <Beyond />
   <SearchAndRetrive />
-  <div>
-    <p>
-      {product?.title}
-    </p>
-    <p>
-      {firstVariant?.price}
-    </p>
-    <AddToCartForm
-      client:load
-      variantId={firstVariant?.id}
-      variantQuantityAvailable={firstVariant?.quantityAvailable}
-      variantAvailableForSale={firstVariant?.availableForSale}
-    />
-  </div>
 </Layout>

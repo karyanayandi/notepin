@@ -39,7 +39,7 @@
 
   <button
     type="submit"
-    class="button mt-10 w-full"
+    class="bg-primary hover:bg-white hover:text-primary text-white font-bold py-3 px-8 rounded-full"
     disabled={$isCartUpdating || noQuantityLeft || !variantAvailableForSale}
   >
     {#if $isCartUpdating}
@@ -65,7 +65,7 @@
       </svg>
     {/if}
     {#if variantAvailableForSale}
-      Add to bag
+      Buy Now
     {:else}
       Sold out
     {/if}
