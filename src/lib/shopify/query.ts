@@ -7,14 +7,10 @@ import {
   GetCartQuery,
   ProductByHandleQuery,
   ProductRecommendationsQuery,
-  ProductsByQueryQuery,
   ProductsQuery,
   RemoveCartLinesMutation,
-  UpdateCartLinesMutation,
 } from "./graphql"
 import { CartResult, ProductResult } from "./schemas"
-
-export type LanguageCode = "EN" | "FR"
 
 // Make a request to Shopify's GraphQL API  and return the data object from the response body as JSON data.
 const makeShopifyRequest = async (
@@ -75,13 +71,12 @@ const makeShopifyRequest = async (
 export const getProducts = async (options: {
   limit?: number
   buyerIP: string
-  language: LanguageCode
 }) => {
-  const { limit = 10, buyerIP, language } = options
+  const { limit = 10, buyerIP } = options
 
   const data = await makeShopifyRequest(
     ProductsQuery,
-    { first: limit, language: language },
+    { first: limit },
     buyerIP,
   )
   const { products } = data
@@ -93,34 +88,7 @@ export const getProducts = async (options: {
   const productsList = products.edges.map((edge: any) => edge.node)
   const ProductsResult = z.array(ProductResult)
   const parsedProducts = ProductsResult.parse(productsList)
-  return parsedProducts
-}
 
-// Get products for the carousel. Filter by querying such as tag name
-
-export const getProductsCarousel = async (options: {
-  limit?: number
-  shortKey: string
-  query: string
-  buyerIP: string
-  language: LanguageCode
-}) => {
-  const { limit = 10, query = "", buyerIP, language } = options
-
-  const data = await makeShopifyRequest(
-    ProductsByQueryQuery,
-    { first: limit, shortKey: "TITLE", query: query, language: language },
-    buyerIP,
-  )
-  const { products } = data
-
-  if (!products) {
-    throw new Error("No products found")
-  }
-
-  const productsList = products.edges.map((edge: any) => edge.node)
-  const ProductsResult = z.array(ProductResult)
-  const parsedProducts = ProductsResult.parse(productsList)
   return parsedProducts
 }
 
@@ -128,32 +96,30 @@ export const getProductsCarousel = async (options: {
 export const getProductByHandle = async (options: {
   handle: string
   buyerIP: string
-  language: LanguageCode
 }) => {
-  const { handle, buyerIP, language } = options
+  const { handle, buyerIP } = options
 
   const data = await makeShopifyRequest(
     ProductByHandleQuery,
-    { handle, language },
+    { handle },
     buyerIP,
   )
   const { product } = data
 
   const parsedProduct = ProductResult.parse(product)
+
   return parsedProduct
 }
 
 export const getProductRecommendations = async (options: {
   productId: string
   buyerIP: string
-  language: LanguageCode
 }) => {
-  const { productId, buyerIP, language } = options
+  const { productId, buyerIP } = options
   const data = await makeShopifyRequest(
     ProductRecommendationsQuery,
     {
       productId,
-      language,
     },
     buyerIP,
   )
@@ -161,6 +127,7 @@ export const getProductRecommendations = async (options: {
 
   const ProductsResult = z.array(ProductResult)
   const parsedProducts = ProductsResult.parse(productRecommendations)
+
   return parsedProducts
 }
 
@@ -201,18 +168,6 @@ export const removeCartLines = async (id: string, lineIds: string[]) => {
   })
   const { cartLinesRemove } = data
   const { cart } = cartLinesRemove
-  const parsedCart = CartResult.parse(cart)
-
-  return parsedCart
-}
-
-export const updateCartLines = async (id: string, lines: object[]) => {
-  const data = await makeShopifyRequest(UpdateCartLinesMutation, {
-    cartId: id,
-    lines,
-  })
-  const { cartLinesUpdate } = data
-  const { cart } = cartLinesUpdate
   const parsedCart = CartResult.parse(cart)
 
   return parsedCart

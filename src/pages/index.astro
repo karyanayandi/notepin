@@ -7,6 +7,19 @@ import Note from "@/components/Note.svelte"
 import Professionals from "@/components/Professionals.svelte"
 import SearchAndRetrive from "@/components/SearchAndRetrive.astro"
 import Layout from "@/layouts/Layout.astro"
+import { setCache } from "@/lib/cache"
+import { getProductByHandle } from "@/lib/shopify/query"
+
+const headers = Astro.request.headers
+const ip = headers.get("x-vercel-forwarded-for") || Astro.clientAddress
+const product = await getProductByHandle({
+  handle: "telos-freestanding-ultralight-tent-2",
+  buyerIP: ip,
+})
+
+setCache.short(Astro)
+
+export const prerender = false
 ---
 
 <Layout title="PLAUD NotePin - The World's Most Wearable AI Voice Recorder">
@@ -17,4 +30,5 @@ import Layout from "@/layouts/Layout.astro"
   <Note client:only="svelte" />
   <Beyond />
   <SearchAndRetrive />
+  {product}
 </Layout>

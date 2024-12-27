@@ -53,7 +53,6 @@ fragment productFragment on Product {
   id
   title
   handle
-  description
   images (first: 10) {
     nodes {
       url
@@ -80,36 +79,24 @@ fragment productFragment on Product {
     height
     altText
   }
-  }
+}
 `
 
 export const ProductsQuery = `#graphql
-query productDetails($language: LanguageCode = EN, $first: Int!) @inContext(language: $language) {
-  products(first: $first) {
-    edges {
-      node {
-        ...productFragment
+query ($first: Int!) {
+    products(first: $first) {
+      edges {
+        node {
+          ...productFragment
+        }
       }
     }
   }
-}
   ${PRODUCT_FRAGMENT}
 `
 
-export const ProductsByQueryQuery = `#graphql
-query ($language: LanguageCode = EN, $first: Int!, $sortKey: ProductSortKeys = TITLE, $query: String!) @inContext(language: $language) {
-  products(first: $first,  sortKey: $sortKey, query: $query) {
-    edges {
-      node {
-        ...productFragment
-      }
-    }
-  }
-}
-  ${PRODUCT_FRAGMENT}
-`
 export const ProductByHandleQuery = `#graphql
-  query ($language: LanguageCode = EN, $handle: String!) @inContext(language: $language) {
+  query ($handle: String!) {
     product(handle: $handle) {
       ...productFragment
     }
@@ -118,7 +105,7 @@ export const ProductByHandleQuery = `#graphql
 `
 
 export const ProductRecommendationsQuery = `#graphql
-  query ($language: LanguageCode = EN, $productId: ID!) @inContext(language: $language) {
+  query ($productId: ID!) {
     productRecommendations(productId: $productId) {
       ...productFragment
     }
@@ -178,32 +165,4 @@ export const RemoveCartLinesMutation = `#graphql
     }
   }
   ${CART_FRAGMENT}
-`
-
-export const UpdateCartLinesMutation = `#graphql
-  mutation ($cartId: ID!, $lines:[CartLineUpdateInput!]!) {
-    cartLinesUpdate(cartId: $cartId, lines: $lines) {
-      cart {
-        ...cartFragment
-      }
-      userErrors {
-        field
-        message
-      }
-    }
-  }
-  ${CART_FRAGMENT}
-`
-
-export const SearchProductsQuery = `#graphql
-  query searchProducts($query: String!, $first: Int) {
-    search(query: $query, first: $first, types: PRODUCT) {
-      edges {
-        node {
-          ...productFragment
-        }
-      }
-    }
-  }
-  ${PRODUCT_FRAGMENT}
 `

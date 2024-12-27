@@ -18,7 +18,6 @@ export const ImageResult = z
     url: z.string(),
     width: z.number().positive().int(),
     height: z.number().positive().int(),
-    srcSet: z.string().nullable().optional(),
   })
   .nullable()
 
@@ -68,7 +67,6 @@ export const ProductResult = z
     id: z.string(),
     title: z.string(),
     handle: z.string(),
-    description: z.string(),
     images: z.object({
       nodes: z.array(ImageResult),
     }),
