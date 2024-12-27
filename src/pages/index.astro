@@ -1,4 +1,5 @@
 ---
+import AddToCartForm from "@/components/AddToCartForm.svelte"
 import Beyond from "@/components/Beyond.astro"
 import Features from "@/components/Features.astro"
 import Hero from "@/components/Hero.svelte"
@@ -12,10 +13,12 @@ import { getProductByHandle } from "@/lib/shopify/query"
 
 const headers = Astro.request.headers
 const ip = headers.get("x-vercel-forwarded-for") || Astro.clientAddress
+
 const product = await getProductByHandle({
   handle: "telos-freestanding-ultralight-tent-2",
   buyerIP: ip,
 })
+const firstVariant = product?.variants.nodes[0]
 
 setCache.short(Astro)
 
@@ -30,5 +33,18 @@ export const prerender = false
   <Note client:only="svelte" />
   <Beyond />
   <SearchAndRetrive />
-  {product}
+  <div>
+    <p>
+      {product?.title}
+    </p>
+    <p>
+      {firstVariant?.price}
+    </p>
+    <AddToCartForm
+      client:load
+      variantId={firstVariant?.id}
+      variantQuantityAvailable={firstVariant?.quantityAvailable}
+      variantAvailableForSale={firstVariant?.availableForSale}
+    />
+  </div>
 </Layout>
